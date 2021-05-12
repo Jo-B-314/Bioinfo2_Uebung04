@@ -46,4 +46,34 @@ int main() {
 	test_set.close();
 	bio_proc.close();
 	return 0;
+
+	//erwartungswert und p-value berechnen und in zugehörigen vector schreiben
+	vector<float> exp_value;
+	vector<big_float> p_value;
+	int n = ref_vec.size();
+	int i = test_vec.size();
+	for (int j = 0; j < bio_vec.size(); j++) {
+		//erwartungswert
+		int m = bio_vec[j].size();
+		float x = (m*i)/n;
+		exp_value.push_back(x);
+
+		//p-value
+		int t = 0;
+		for (int k = 0; k < bio_vec[j].size(); k++) {
+			for (int l = 0; l < test_vec.size(); l++) {
+				if ( bio_vec[i][k] == test_vec[l]) {
+					t++;
+				}
+			}
+		}
+		big_float p1 = boost::math::binomial_coefficient<big_float>(m,n);
+		big_float p2 = boost::math::binomial_coefficient<big_float>(n-m, i-t);
+		big_float p3 = boost::math::binomial_coefficient<big_float>(n, i);
+		big_float p = (p1*p2)/p3;
+		p_value.push_back(p);
+	}
+
+
+	
 }
