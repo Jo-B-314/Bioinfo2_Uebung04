@@ -124,7 +124,7 @@ int main(int argc, char* argv[]) {
 		int t = 0;
 		for (size_t k = 0; k < bio_vec[j].size(); k++) {
 			for (size_t l = 0; l < test_vec.size(); l++) {
-				if ( !bio_vec[i][k].compare(test_vec[l]) ) {
+				if ( !bio_vec[j][k].compare(test_vec[l]) ) {
 					t++;
 				}
 			}
