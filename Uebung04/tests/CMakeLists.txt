@@ -13,7 +13,7 @@ function(add_gtest TEST_NAME)
     target_link_libraries(${TEST_NAME} gtest gtest_main test_driver ${MY_ARGS_LIBRARIES} ${CIP_STD_LIBS})
 
     # Add the test to CTest
-    add_test(NAME ${TEST_NAME} WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/test" COMMAND ${TEST_NAME})
+    add_test(NAME ${TEST_NAME} WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/tests" COMMAND ${TEST_NAME})
 endfunction()
 
 # Füge einen Treiber hinzu, der die Tests
